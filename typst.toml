@@ -1,0 +1,8 @@
+[package]
+name = "fun-itertools"
+version = "0.1.0"
+entrypoint = "itertools.typ"
+authors = ["Ludwig Austermann"]
+license = "MIT"
+description = "A package providing convinient functional functions for typst to use on arrays."
+repository = "https://ludwig-austermann/typst-itertools"
