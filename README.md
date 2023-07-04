@@ -1,8 +1,11 @@
-# Itertools Package
+# FunArray Package
 This package provides some convinient functional functions for [typst](https://typst.app/) to use on arrays.
 
 ## Usage
 All relevant code sits inside `itertools.typ`. Some examples and also the methods part of this README, are given as `.typ + .pdf` files in the example folder.
+
+## Important note
+Almost all functions are one-liners, which could, instead of being loaded via a package import, also be just copied directly into your source files.
 
 ## Methods
 Let us define
@@ -92,6 +95,12 @@ let g = group_by(f, x => x == 0)
 g = ((0, 0), (1, 1, 1), (0, 0), (1,))
 ```
 
+### flatten
+Typst has a `flatten` method for arrays, however that method acts recursively. For instance
+`(((1,2,3), (2,3)), ((1,2,3), (1,2))).flatten() = (1, 2, 3, 2, 3, 1, 2, 3, 1, 2)`
+Normally, one would only have flattened one level. To do this, we can use the typst array concatenation method +, or by folding, the sum method for arrays:
+`(((1,2,3), (2,3)), ((1,2,3), (1,2))).sum() = ((1, 2, 3), (2, 3), (1, 2, 3), (1, 2))`
+
 ### intersperse
 This function inserts item inbetween all elements of the array.
 
@@ -111,3 +120,6 @@ These functions do exactly as they say.
 take_while(h, x => x < 1) = (0, 0, 0.25, 0.5, 0.75)
 skip_while(h, x => x < 1) = (1, 1, 1, 0.25, 0.5, 0.75, 0, 0, 0.25, 0.5, 0.75, 1)
 ```
+
+## Unsafe functions
+The core functions are defined in `funarray_unsafe.typ`. However, assertions (error checking) are not there and it is generally not being advised to use these directly. Still, if being cautious, one can use the imported `funarray_unsafe` module in `funarray(.typ)`. All function names are the same.

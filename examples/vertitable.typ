@@ -1,4 +1,4 @@
-#import "../itertools.typ": chunks;
+#import "../funarray.typ": chunks;
 
 #let vertitable(..items) = chunks(items.pos(), 2).map(x => box(
   x.at(0) +  " (" + text(gray, x.at(1)) + ")"
