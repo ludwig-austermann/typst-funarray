@@ -2,12 +2,12 @@
 This package provides some convinient functional functions for [typst](https://typst.app/) to use on arrays.
 
 ## Usage
-All relevant code sits inside `itertools.typ`. Some examples and also the methods part of this README, are given as `.typ + .pdf` files in the example folder.
+All relevant code sits inside `funarray.typ`. Some examples and also the functions part of this README, are given as `.typ + .pdf` files in the examples folder.
 
 ## Important note
 Almost all functions are one-liners, which could, instead of being loaded via a package import, also be just copied directly into your source files.
 
-## Methods
+## Functions
 Let us define
 `a = (1, "not prime", 2, "prime", 3, "prime", 4, "not prime", 5, "prime")`
 
@@ -121,5 +121,5 @@ take_while(h, x => x < 1) = (0, 0, 0.25, 0.5, 0.75)
 skip_while(h, x => x < 1) = (1, 1, 1, 0.25, 0.5, 0.75, 0, 0, 0.25, 0.5, 0.75, 1)
 ```
 
-## Unsafe functions
+## Unsafe Functions
 The core functions are defined in `funarray_unsafe.typ`. However, assertions (error checking) are not there and it is generally not being advised to use these directly. Still, if being cautious, one can use the imported `funarray_unsafe` module in `funarray(.typ)`. All function names are the same.
