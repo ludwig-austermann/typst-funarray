@@ -16,10 +16,6 @@
 
 #range(1, 4).map(i => arrs.map(a => group-by(a, n => calc.rem(n, i) == 0)))
 
-#arrs.map(a => intersperse(a, -1))
-
-#intersperse(arrs, range(5))
-
 #arrs.map(a => take-while(a, x => x < 3))
 
 #arrs.map(a => skip-while(a, x => x < 3))

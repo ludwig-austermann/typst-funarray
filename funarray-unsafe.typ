@@ -12,7 +12,29 @@
 }
 
 /// inverse of zip method. array(pair) -> pair(array)
-#let unzip(arr) = (arr.map(x => x.at(0)), arr.map(x => x.at(1)))
+#let unzip(arr) = if arr.len() > 0 {
+  let n = arr.at(0).len()
+  let res = range(n).map(_ => ())
+  for x in arr {
+    for i in range(n) {
+      res.at(i).push(x.at(i))
+    }
+  }
+  res
+} else {
+  ()
+}
+
+/// inverse of zip method. array(pair) -> pair(array)
+#let unzipN(arr, n: 2) = {
+  let res = range(n).map(_ => ())
+  for x in arr {
+    for i in range(n) {
+      res.at(i).push(x.at(i))
+    }
+  }
+  res
+}
 
 /// cycles through arr until length is met
 #let cycle(arr, length) = {

@@ -2,10 +2,13 @@
 This package provides some convinient functional functions for [typst](https://typst.app/) to use on arrays.
 
 ## Usage
-To use this package simply `#import "@preview/funarray:0.2.0"`. To import all functions use `: *` and for specific ones, use either the module or as described in the [typst docs](https://typst.app/docs/reference/scripting#modules).
+To use this package simply `#import "@preview/funarray:0.3.0"`. To import all functions use `: *` and for specific ones, use either the module or as described in the [typst docs](https://typst.app/docs/reference/scripting#modules).
 
 ## Important note
 Almost all functions are one-liners, which could, instead of being loaded via a package import, also be just copied directly into your source files.
+
+## Dokumentation
+A prettier und easier to read version of the documentation exists in the example folder, which is done in typst and exported to pdf. Otherwise, bellow is the markdown version.
 
 ## Functions
 Let us define
@@ -23,7 +26,7 @@ The chunks function translates the array to an array of array. It groups the ele
 )`
 
 ### unzip
-The unzip function is the inverse of the zip method, it transforms an array of pairs to a pair of vectors.
+The unzip function is the inverse of the zip method, it transforms an array of pairs to a pair of vectors. You can also give input an array of `n`-tuples resulting in in `n` arrays.
 
 `unzip(b) = (
   (1, 2, 3, 4, 5),
@@ -109,16 +112,7 @@ To handle further depth, one can use flatten again, so that in our example:
 `(((1,2,3), (2,3)), ((1,2,3), (1,2))).sum().sum() = (((1,2,3), (2,3)), ((1,2,3), (1,2))).flatten()`
 
 ### intersperse
-This function inserts item inbetween all elements of the array.
-
-`intersperse(f, 2) = (0, 2, 0, 2, 1, 2, 1, 2, 1, 2, 0, 2, 0, 2, 1)`
-
-Combined with flatten we can do this:
-
-```typst
-let h = intersperse(g, (0.25, 0.5, 0.75)).flatten()
-h = ( 0, 0, 0.25, 0.5, 0.75, 1, 1, 1, 0.25, 0.5, 0.75, 0, 0, 0.25, 0.5, 0.75, 1)
-```
+This function has been removed in version 0.3, as typst 0.8 provides such functionality by default.
 
 ### take-while and skip-while
 These functions do exactly as they say.
@@ -133,7 +127,7 @@ The core functions are defined in `funarray-unsafe.typ`. However, assertions (er
 
 To do this from the package, do as follows:
 ```
-#import @preview/funarray:0.2.0
+#import @preview/funarray:0.3.0
 
 #funarray.funarray-unsafe.chunks(range(10), 3)
 ```

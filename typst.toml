@@ -1,8 +1,15 @@
 [package]
 name = "funarray"
-version = "0.2.0"
+version = "0.3.0"
 entrypoint = "funarray.typ"
 authors = ["Ludwig Austermann"]
 license = "MIT"
 description = "Package providing convenient functional functions to use on arrays."
 repository = "https://github.com/ludwig-austermann/typst-funarray"
+compiler = "0.8.0"
+exclude = ["examples"]
+
+# for usage with https://github.com/ludwig-austermann/typ-pack
+[packaging]
+include = ["funarray-unsafe.typ", "examples/*.typ", "examples/*.pdf"]
+prescript = "examples/.create_outputs.nu"
