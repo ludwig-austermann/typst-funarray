@@ -82,3 +82,31 @@
 
   funarray-unsafe.skip-while(arr, f)
 }
+
+/// maps over elements together with a state, also refered to as accumulate
+#let accumulate(arr, init, f) = {
+  assert.eq(type(arr), array, message: "Argument `arr` must be an array.")
+
+  funarray-unsafe.accumulate(arr, init, f)
+}
+
+/// similar to accumulate, but f : (state, value) -> (state, value), simulating mutable state
+#let scan(arr, init, f) = {
+  assert.eq(type(arr), array, message: "Argument `arr` must be an array.")
+  
+  funarray-unsafe.scan(arr, init, f)
+}
+
+/// f : state -> (state, value)
+#let unfold(init, f, take) = {
+  assert(take >= 0, message: "take argument must be >= 0")
+  
+  funarray-unsafe.unfold(init, f, take)
+}
+
+/// iteratively applies f to last value
+#let iterated(init, f, take) = {
+  assert(take >= 0, message: "take argument must be >= 0")
+  
+  funarray-unsafe.iterated(init, f, take)
+}

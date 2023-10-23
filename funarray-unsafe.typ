@@ -102,3 +102,44 @@
   }
   arr.slice(min-index)
 }
+
+/// maps over elements together with a state, also refered to as accumulate
+#let accumulate(arr, init, f) = {
+  let res = arr
+  for (k, v) in arr.enumerate() {
+    init = f(init, v)
+    res.at(k) = init
+  }
+  res
+}
+
+/// similar to accumulate, but f : (state, value) -> (state, value), simulating mutable state
+#let scan(arr, init, f) = {
+  let res = arr
+  for (k, v) in arr.enumerate() {
+    (init, v) = f(init, v)
+    res.at(k) = v
+  }
+  res
+}
+
+/// f : state -> (state, value)
+#let unfold(init, f, take) = {
+  let res = ()
+  for _ in range(take) {
+    let (state, v) = f(init)
+    init = state
+    res.push(v)
+  }
+  res
+}
+
+/// iteratively applies f to last value
+#let iterated(init, f, take) = {
+  let res = ()
+  for _ in range(take) {
+    init = f(init)
+    res.push(init)
+  }
+  res
+}
